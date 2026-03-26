@@ -149,6 +149,20 @@ function FormattedText({ text }: { text: string }) {
   return <div className="space-y-0.5">{blocks}</div>;
 }
 
+function toSafeToolOutputText(value: unknown): string {
+  if (typeof value === "string") return value;
+  if (typeof value === "number" || typeof value === "boolean" || typeof value === "bigint") {
+    return String(value);
+  }
+  if (value == null) return "";
+
+  try {
+    return JSON.stringify(value);
+  } catch {
+    return "";
+  }
+}
+
 export function BrowseSession({
   conversationId,
   browserSessionId,
@@ -434,12 +448,12 @@ export function BrowseSession({
 
     if (!lastToolOutput || !("output" in lastToolOutput)) return;
 
-    const outputText = String(lastToolOutput.output ?? "");
+    const outputText = toSafeToolOutputText(lastToolOutput.output);
     const key = outputText.slice(0, 400);
     if (!key || key === lastBrowserSafetyKeyRef.current) return;
     lastBrowserSafetyKeyRef.current = key;
 
-    const urlMatch = outputText.match(/https?:\/\/[^\s)"']+/i);
+    const urlMatch = /https?:\/\/[^\s)"']+/i.exec(outputText);
     const pageText = outputText.slice(0, 1500);
 
     void (async () => {

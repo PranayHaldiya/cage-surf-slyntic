@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const body = await req.json();
+    const body: unknown = await req.json();
     const parsed = requestSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json({ error: "Invalid input", details: parsed.error.flatten(), traceId }, { status: 400 });
