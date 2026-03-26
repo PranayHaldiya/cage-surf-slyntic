@@ -2,7 +2,9 @@
 
 Cage Surf is a voice-first safe browsing assistant for older adults. It helps users navigate websites through natural conversation, explains confusing pages in simple language, and warns them before acting on suspicious messages, payment requests, fake support flows, or unsafe instructions.
 
-## Product Direction
+<img width="1887" height="942" alt="Screenshot from 2026-03-27 00-49-46" src="https://github.com/user-attachments/assets/70bfb46c-a493-462d-bdc0-c0473fc6caa1" />
+
+##Product Direction
 
 Older adults often face two problems online at the same time:
 1. websites are difficult to navigate
