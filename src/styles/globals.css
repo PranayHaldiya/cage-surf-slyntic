@@ -1,0 +1,254 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.95rem;
+  --background: #0b1015;
+  --foreground: #f3f0e8;
+  --card: #121922;
+  --card-foreground: #f3f0e8;
+  --popover: #121922;
+  --popover-foreground: #f3f0e8;
+  --primary: #34d399;
+  --primary-foreground: #08110d;
+  --secondary: #1b232d;
+  --secondary-foreground: #f3f0e8;
+  --muted: #141b24;
+  --muted-foreground: #9ca5af;
+  --accent: #162129;
+  --accent-foreground: #f3f0e8;
+  --destructive: #ef6b6b;
+  --border: rgba(255, 255, 255, 0.09);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: rgba(52, 211, 153, 0.55);
+  --chart-1: #34d399;
+  --chart-2: #65d6ff;
+  --chart-3: #f4c35d;
+  --chart-4: #ee8fcb;
+  --chart-5: #9a8cff;
+  --sidebar: #121922;
+  --sidebar-foreground: #f3f0e8;
+  --sidebar-primary: #34d399;
+  --sidebar-primary-foreground: #08110d;
+  --sidebar-accent: #1a242d;
+  --sidebar-accent-foreground: #f3f0e8;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: rgba(52, 211, 153, 0.55);
+}
+
+.dark {
+  --background: #0b1015;
+  --foreground: #f3f0e8;
+  --card: #121922;
+  --card-foreground: #f3f0e8;
+  --popover: #121922;
+  --popover-foreground: #f3f0e8;
+  --primary: #34d399;
+  --primary-foreground: #08110d;
+  --secondary: #1b232d;
+  --secondary-foreground: #f3f0e8;
+  --muted: #141b24;
+  --muted-foreground: #9ca5af;
+  --accent: #162129;
+  --accent-foreground: #f3f0e8;
+  --destructive: #ef6b6b;
+  --border: rgba(255, 255, 255, 0.09);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: rgba(52, 211, 153, 0.55);
+  --chart-1: #34d399;
+  --chart-2: #65d6ff;
+  --chart-3: #f4c35d;
+  --chart-4: #ee8fcb;
+  --chart-5: #9a8cff;
+  --sidebar: #121922;
+  --sidebar-foreground: #f3f0e8;
+  --sidebar-primary: #34d399;
+  --sidebar-primary-foreground: #08110d;
+  --sidebar-accent: #1a242d;
+  --sidebar-accent-foreground: #f3f0e8;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: rgba(52, 211, 153, 0.55);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top, rgba(52, 211, 153, 0.06), transparent 24%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 24%),
+      linear-gradient(180deg, #0b1015, #0a0f14 44%, #091017);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(52, 211, 153, 0.2);
+    color: #f3f0e8;
+  }
+}
+
+@layer utilities {
+  .soft-panel {
+    background: linear-gradient(180deg, rgba(19, 26, 35, 0.98), rgba(14, 20, 29, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.22);
+  }
+
+  .soft-outline {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .trust-glow {
+    box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.18), 0 12px 48px rgba(52, 211, 153, 0.08);
+  }
+
+  .reading-width {
+    max-width: 68ch;
+  }
+}
+
+@keyframes landing-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.landing-reveal {
+  animation: landing-slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.landing-reveal-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.landing-reveal-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.landing-reveal-delay-3 {
+  animation-delay: 0.5s;
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.16) 45%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.16) 55%,
+    transparent 62%
+  );
+  transform: translateX(-200%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  transform: translateX(200%);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee-reverse {
+  animation: marquee-scroll 40s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .landing-reveal {
+    animation: none;
+    opacity: 1;
+  }
+
+  .btn-shine::after {
+    display: none;
+  }
+
+  .marquee,
+  .marquee-reverse {
+    animation: none;
+  }
+}
